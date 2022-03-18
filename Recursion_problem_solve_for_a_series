@@ -1,0 +1,69 @@
+public class CalculateSumOfTheFollowingSeries {
+    public static void RecursiveFunction(int n,int sum,int t1,int t2,int t3){   
+        if(n<=0){
+            System.out.println(sum);
+            return ;
+        }else{
+            if(n==1){
+                if(t1*t2*t3<0){
+                    System.out.print("("+t1*t2*t3+") = "); 
+                }else{
+                    System.out.print(t1*t2*t3+" = "); 
+                }      
+            }else{
+                if(t1*t2*t3<0){
+                    System.out.print("("+t1*t2*t3+") + ");
+                }else{
+                    System.out.print(t1*t2*t3+" + ");
+                }  
+            }
+        }
+        RecursiveFunction(n-1,sum+t1*t2*t3,t1*2,t2+2,t3-1);   
+    }
+    public static void main(String[] args) {
+        int n,sum=0,t1=2,t2=3,t3=4;
+        Scanner input=new Scanner(System.in);
+        while(true){
+            System.out.print("Give input for the value of N-th term: ");
+            n=input.nextInt();
+            RecursiveFunction(n,sum,t1,t2,t3);
+        }
+        
+    }
+    
+}
+/*Using c++
+#include <iostream>
+using namespace std;
+void RecursiveFunction(long long n,long long sum,long long t1,long long t2,long long t3){
+        if(n<=0){
+            cout<<sum<<"\n";
+            return ;
+        }else{
+            if(n==1){
+                if(t1*t2*t3<0){
+                    cout<<"("<<t1*t2*t3<<") = ";
+                }else{
+                    cout<<t1*t2*t3<<" = ";
+                }
+            }else{
+                if(t1*t2*t3<0){
+                    cout<<"("<<t1*t2*t3<<") + ";
+                }else{
+                    cout<<t1*t2*t3<<" + ";
+                }
+            }
+        }
+        RecursiveFunction(n-1,sum+t1*t2*t3,t1*2,t2+2,t3-1);
+}
+int main() {
+    long long n,sum=0,t1=2,t2=3,t3=4;
+    while(true){
+        cout<<"Give input for the value of N-th term: ";
+        cin>>n;
+        RecursiveFunction(n,sum,t1,t2,t3);
+    }
+    return 0;
+}
+
+*/
